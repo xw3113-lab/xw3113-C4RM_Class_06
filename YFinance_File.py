@@ -1,13 +1,13 @@
 import numpy as np
-import pandas as pd
 
-def YahooData2returns(YahooData=None,symbol='AAPL'):
-    # Input:
-    # YahooData = data from Yahoo Finance
-    # Output:
-    # returns = array of returns
-    # Steps:
-    # Extract 'Close' and symbol (This is a 2d column. Demo below.)
-    # Calculate and return the lagged returns
-    returns = np.array([0.01      , 0.00990099])
-    return returns
+def ES(losses, confidence=None, VaR=None, use_PnL=False):
+    if use_PnL:
+        losses = -np.array(losses)
+    else:
+        losses = np.array(losses)
+
+    if VaR is None:
+        VaR = np.percentile(losses, 100 * confidence)
+
+    es_value = np.mean(losses[losses > VaR])
+    return es_value
