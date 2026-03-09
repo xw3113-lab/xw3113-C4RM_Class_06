@@ -10,7 +10,6 @@ def VaR(r, confidence, principal=1):
     out = principal * percent_var(r, confidence)
     return out
 
-
 # Partial demonstration
 def percent_var(r, confidence):
     # This function returns the left tail value and displays a histogram
@@ -23,8 +22,7 @@ def percent_var(r, confidence):
     alpha = confidence
     out = np.percentile(r, (1 - alpha) * 100)
     return abs(out)
-
-
+    
 # Example tools: percentile
 returns = np.random.normal(0, 1, 10000)
 print(np.percentile(returns, 97.72))
