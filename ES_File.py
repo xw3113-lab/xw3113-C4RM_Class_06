@@ -12,7 +12,6 @@ def ES(losses, confidence=None, VaR=None, use_PnL=False):
     es_value = np.mean(losses[losses > VaR])
     return es_value
 
-
 # Unit test
 u = np.random.uniform(0, 100, 100000)
 
